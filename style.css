@@ -1,0 +1,401 @@
+:root {
+  --accent-color: rgba(0, 102, 204, 0.9);
+  --bg-color: #000000;
+  --text-color: #222;
+  --subtext-color: #666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.top-bg-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px; /* same height as .header-row */
+  background-color: black;
+  z-index: -1;  /* Make sure it stays behind the header */
+}
+
+
+body {
+  background-color: rgb(255, 255, 255); /* light blue with 15% opacity */
+  color: rgb(0, 0, 0); /* white text for good contrast */
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Optional: add a subtle blur or overlay for better effect */
+.main-content {
+  background-color: rgba(0, 0, 0, 0.4); /* stronger blue with 40% opacity */
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: remove space if <h1> is pushing too much */
+h1 {
+  margin-top: 10px;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--accent-color); /* Your hover effect */
+}
+
+.nav-link.active {
+  color: rgba(0, 102, 204, 0.9); /* Blue color for active link */
+  font-weight: 700;
+}
+
+
+nav {
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.87) 60%, rgba(0, 0, 0, 0) 100%); */
+  background: black;
+  padding: 10px 20px;
+  /* box-shadow: 0 4px 3px rgba(130, 130, 130, 0.1); */
+  /* border-radius: 8px; */
+  text-align: center;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 5000;
+  transition: color 0.3s;
+}
+
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: var(--subtext-color);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+.logo {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 33px;           /* Slightly bigger letters */
+  color: white;
+  background-color: rgba(0, 102, 204, 0.9); /* Blue with slight opacity */
+  padding: 5px 05px;         /* Less vertical, more horizontal padding */
+  display: inline-block;
+  letter-spacing: 1px;       /* A bit more spacing for style */
+  text-transform: uppercase;
+  border-radius: 0%;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+  margin: 0 auto 05px auto; /* Center horizontally, margin below */
+  text-align: center;
+
+    /* Stretch vertically */
+  transform: scaleY(1.5); /* 1.4 times taller */
+}
+
+.header-row {
+  position: relative;
+  height: 52px; /* adjust as needed */
+  margin-bottom: 00px;
+}
+
+.left-logo {
+  position: absolute;
+  left: 20px;
+  top: 60%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  height: 45px;  /* or adjust size */
+  width: auto;
+  z-index: 1;
+}
+
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+  height: 52px;
+  position: relative;
+}
+
+.site-logo {
+  height: 42px;
+  width: auto;
+}
+
+
+.search-container {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.search-bar {
+  padding: 6px 30px 6px 10px; /* extra right padding for icon */
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px; /* Adjust if needed */
+  background: url('data:image/svg+xml;utf8,<svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M21 21l-4.35-4.35M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>') no-repeat right 8px center;
+  background-size: 16px 16px;
+}
+
+
+/* Hero/Slideshow Section */
+/* Hero/Slideshow Section - Aspect Ratio Fix */
+.slideshow-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #000;
+}
+
+.slide-wrapper {
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  aspect-ratio: 16 / 9; /* Maintains ratio on all screens */
+}
+
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.233) 80%), 
+    linear-gradient(to top, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.034) 50%);
+  display: flex;
+  align-items: flex-start;  /* align vertically to top */
+  justify-content: flex-start; /* align horizontally to left */
+  padding: 10vw 4vw; /* adjust left/right padding, but minimal top padding */
+  z-index: 2;
+}
+
+
+.hero-content {
+  max-width: 700px;
+  color: #fff;
+}
+
+.Spotlight {
+  font-size: 1.5vw;
+  color: #4d9dff;
+}
+
+
+.anime-title {
+  font-size: 3.5vw;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  line-height: 1.2;
+
+}
+
+.anime-description {
+  font-size: 1.7vw;
+  line-height: 1.5;
+  margin-bottom: 1em;
+  text-align: left;
+  max-width: 600px;
+  padding-right: 1rem;
+}
+
+/* Hide on small screens */
+@media (max-width: 768px) {
+  .anime-description {
+    display: none;
+  }
+}
+
+.hero-content {
+  max-width: 700px;
+  color: #fff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 4;
+}
+
+.watch-now,
+.details {
+  background-color: #4d9dff;
+  color: white;
+  padding: clamp(6px, 0.7vw, 12px) clamp(12px, 1.5vw, 24px);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.15s ease;
+  display: inline-block;
+  transform: scale(1);
+}
+
+.watch-now:hover,
+.details:hover {
+  background-color: #4a8ce6; /* slightly darker blue on hover */
+}
+
+.watch-now:active,
+.details:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
+}
+
+.watch-now:focus,
+.details:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 2rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+.scroll-btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Trending */
+.trending-title {
+  margin-top: 30px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.trending-wrapper {
+  position: relative;
+  padding: 0 40px;
+}
+
+.trending-scroll-container {
+  display: flex;
+  gap: 50px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trending-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-item {
+  flex: 0 0 auto;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+.trending-item img {
+  margin-bottom: 15px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trending-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(77, 157, 255, 0.7);
+  z-index: 2;
+}
+
+

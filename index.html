@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senpai Artworks Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-bg-strip"></div>
+
+<div class="top-bg-strip"></div>
+
+
+  <!-- Marvel-style logo -->
+<div class="header-row">
+  <img src="logo/rem.jpg" alt="Logo" class="left-logo" />
+  <div class="logo">SENPAIWORKS</div>
+   <div class="search-container">
+    <input type="text" placeholder="Search..." class="search-bar" />
+  </div>
+  
+</div>
+
+  <!-- Navigation -->
+ <nav>
+  <a href="index.html" class="nav-link active">HOME</a>
+  <a href="2dworld.html" class="nav-link">2D WORLD</a>
+  <a href="3dworld.html" class="nav-link">3D WORLD</a>
+  <a href="webdevelopment.html" class="nav-link">WEB DEVELOPMENT</a>
+  <a href="about.html" class="nav-link">ABOUT</a>
+</nav>
+
+<section class="slideshow-container">
+  <button class="scroll-btn left" aria-label="Scroll left">&#8249;</button>
+  <div class="slide-wrapper">
+    <!-- Slide 1 - Deadpool -->
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('home assets/Showcase remake.jpg');"></div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <p class="Spotlight">#1 Spotlight</p>
+          <h1 class="anime-title">Deadpool Animation</h1>
+          <p class="anime-description">Experience the chaos, comedy, and combat in this high-octane, fan-made Deadpool animation—crafted from scratch with a unique style and full of surprises.</p>
+         <div class="hero-buttons">
+            <a href="https://www.youtube.com/watch?v=SsoV6Mdjr6A" class="watch-now" target="_blank" rel="noopener">▶ Watch Now</a>
+            <a href="#" class="details">Details <b>></b></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 2 - Zoro -->
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('home assets/zoro.png');"></div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <p class="Spotlight">#2 Spotlight</p>
+          <h1 class="anime-title">Zoro Tribute</h1>
+          <p class="anime-description">Witness the swordplay and loyalty of Roronoa Zoro in this intense fan-made animation capturing his iconic moments.</p>
+          <div class="hero-buttons">
+            <a href="#" class="watch-now">▶ Watch Now</a>
+            <a href="#" class="details">Details <b>></b></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Slide 3 - Itachi -->
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('home assets/itachi.jpg');"></div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <p class="Spotlight">#3 Spotlight</p>
+          <h1 class="anime-title">Itachi Uchiha</h1>
+          <p class="anime-description">Dive into the tragic and powerful story of Itachi—filled with mystery, love, and sacrifice—in this cinematic animation.</p>
+          <div class="hero-buttons">
+            <a href="#" class="watch-now">▶ Watch Now</a>
+            <a href="#" class="details">Details <b>></b></a>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <!-- Slide 4 - Kaneki -->
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('home assets/kaneki.jpg');"></div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <p class="Spotlight">#4 Spotlight</p>
+          <h1 class="anime-title">Kaneki Awakens</h1>
+          <p class="anime-description">Watch Kaneki’s transformation from human to ghoul in this emotional and action-packed short animation.</p>
+          <div class="hero-buttons">
+            <a href="#" class="watch-now">▶ Watch Now</a>
+            <a href="#" class="details">Details <b>></b></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5 - BTS -->
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('home assets/bts.jpg');"></div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <p class="Spotlight">#5 Spotlight</p>
+          <h1 class="anime-title">BTS Style Motion</h1>
+          <p class="anime-description">Get into the rhythm with this stylish, energetic animation celebrating BTS's global impact and music vibes.</p>
+          <div class="hero-buttons">
+            <a href="#" class="watch-now">▶ Watch Now</a>
+            <a href="#" class="details">Details <b>></b></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="scroll-btn right" aria-label="Scroll right">&#8250;</button>
+</section>
+
+
+<script>
+  // Responsive Slideshow
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide');
+  let currentIndex = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const slideInterval = 5000;
+  let autoSlideTimer;
+
+  // Initialize
+  function initSlideshow() {
+    slides[currentIndex].classList.add('active');
+    startAutoSlide();
+    
+    // Touch events for mobile
+    document.querySelector('.slideshow-container').addEventListener('touchstart', handleTouchStart, {passive: true});
+    document.querySelector('.slideshow-container').addEventListener('touchend', handleTouchEnd, {passive: true});
+  }
+
+  // Slide transition
+  function goToSlide(index) {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (index + slides.length) % slides.length;
+    slides[currentIndex].classList.add('active');
+    resetAutoSlide();
+  }
+
+  // Auto slide
+  function startAutoSlide() {
+    autoSlideTimer = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, slideInterval);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    startAutoSlide();
+  }
+
+  // Touch handlers
+  function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].clientX;
+  }
+
+  function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+  }
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) goToSlide(currentIndex + 1);
+    if (touchEndX > touchStartX + 50) goToSlide(currentIndex - 1);
+  }
+
+  // Initialize
+  initSlideshow();
+});
+
+// Responsive trending scroll
+function setupTrendingScroll() {
+  const container = document.getElementById('trending-scroll');
+  if (!container) return;
+  
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  container.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  container.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2;
+    container.scrollLeft = scrollLeft - walk;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupTrendingScroll);
+</script>
+
+<!-- end of the slideshow -->
+
+<!-- recent works -->
+<section class="trending-section">
+  <h3 class="trending-title">Best Artworks</h3>
+  <div class="trending-wrapper">
+    <button class="scroll-btn left" onclick="scrollTrending(-1)">&#10094;</button>
+
+    <div class="trending-scroll-container" id="trending-scroll">
+      <div class="trending-item">
+        <img src="home assets/deadpool poster.png" alt="Deadpool" />
+        <p>Deadpool</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/zoro.png" alt="Zoro" />
+        <p>Zoro</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/miku full.jpg" alt="Itachi" />
+        <p>Itachi</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="Kaneki" />
+        <p>Kaneki</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="BTS" />
+        <p>BTS</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="BTS" />
+        <p>BTS</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="BTS" />
+        <p>BTS</p>
+      </div>
+    </div>
+
+    <button class="scroll-btn right" onclick="scrollTrending(1)">&#10095;</button>
+  </div>
+</section>
+
+<script>
+  function scrollTrending(direction) {
+    const container = document.getElementById('trending-scroll');
+    const scrollAmount = 300;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+</script>
+
+
+
+
+
+<!-- Placeholder where the footer will load -->
+<div id="footer-container"></div>
+
+<!-- JavaScript to load the footer -->
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide');
+  const slideWrapper = document.querySelector('.slide-wrapper');
+  const scrollButtons = document.querySelectorAll('.scroll-btn');
+  let currentIndex = 0;
+  let slideInterval;
+  
+  // Initialize first slide
+  slides[currentIndex].classList.add('active');
+  
+  // Auto-advance every 5 seconds (keep this)
+  function startSlideShow() {
+    slideInterval = setInterval(() => {
+      goToSlide((currentIndex + 1) % slides.length, true); // true = auto transition
+    }, 5000);
+  }
+  
+  // Transition handler
+  function goToSlide(index, isAutoTransition = false) {
+    // Only animate for auto transitions
+    const transitionTime = isAutoTransition ? '0.5s' : '0s';
+    
+    // Apply instant transition for manual clicks
+    document.documentElement.style.setProperty('--transition-time', transitionTime);
+    
+    slides[currentIndex].classList.remove('active');
+    currentIndex = index;
+    slides[currentIndex].classList.add('active');
+    
+    // Scroll behavior
+    slideWrapper.scrollTo({
+      left: currentIndex * slideWrapper.clientWidth,
+      behavior: isAutoTransition ? 'smooth' : 'auto'
+    });
+    
+    // Reset timer on manual click
+    if (!isAutoTransition) {
+      clearInterval(slideInterval);
+      startSlideShow();
+    }
+  }
+  
+  // Button controls
+  scrollButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const direction = button.classList.contains('left') ? -1 : 1;
+      goToSlide((currentIndex + direction + slides.length) % slides.length);
+    });
+  });
+  
+  // Start the slideshow
+  startSlideShow();
+});
+</script>
+</body>
+</html>

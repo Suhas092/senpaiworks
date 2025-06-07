@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senpai Artworks Portfolio</title>
+  <link rel="stylesheet" href="about.css" />
+  
+</head>
+
+<body>
+
+  <div class="top-bg-strip"></div>
+  <div class="top-bg-strip"></div>
+
+  <!-- Marvel-style logo -->
+  <div class="header-row">
+    <img src="logo/rem.jpg" alt="Logo" class="left-logo" />
+    <div class="logo">SENPAIWORKS</div>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." class="search-bar" />
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="2dworld.html" class="nav-link">2D WORLD</a>
+    <a href="3dworld.html" class="nav-link">3D WORLD</a>
+    <a href="webdevelopment.html" class="nav-link">WEB DEVELOPMENT</a>
+    <a href="about.html" class="nav-link active">ABOUT</a>
+  </nav>
+
+  <!-- About Section -->
+<section class="about-section">
+  <img class="about-img" src="about assets/suhas 2.jpg" alt="Artist at work" />
+
+  <div class="about-text">
+    <h1>About SenpaiWorks</h1>
+    <p>Hello! I'm <strong>Suhas</strong>, the creator behind SenpaiWorks. I’m a B.Tech graduate in Electronics and Communication Engineering from <strong>PES University</strong>.</p>
+    <p>My journey into the world of animation and illustration began as a self-taught artist with a deep passion for storytelling and visual expression.</p>
+    <p>It all started when I brought my favorite characters to life through my own interpretations. Inspired by anime and the dynamic worlds of 2D/3D animation, I started creating art that resonated with fans.</p>
+    <p>What started as a hobby evolved into a platform for sharing creations and connecting with fellow art lovers. SenpaiWorks is a celebration of imagination, creativity, and storytelling.</p>
+    <p>Thanks for being part of this journey — let's keep creating magic together!</p>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      })
+      .catch(err => console.error('Failed to load footer:', err));
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senpai Artworks Portfolio</title>
+  <link rel="stylesheet" href="2d style.css" />
+</head>
+<body>
+
+  <!-- Marvel-style logo -->
+<div class="top-bg-strip"></div>
+
+<div class="top-bg-strip"></div>
+
+<div class="header-row">
+  <img src="logo/rem.jpg" alt="Logo" class="left-logo" />
+  <div class="logo">SENPAIWORKS</div>
+  <div class="search-container">
+    <input type="text" placeholder="Search..." class="search-bar" />
+  </div>
+</div>
+
+
+
+  <!-- Navigation -->
+ <nav>
+  <a href="index.html" class="nav-link">HOME</a>
+  <a href="2dworld.html" class="nav-link active">2D WORLD</a>
+  <a href="3dworld.html" class="nav-link">3D WORLD</a>
+  <a href="webdevelopment.html" class="nav-link">WEB DEVELOPMENT</a>
+  <a href="about.html" class="nav-link">ABOUT</a>
+</nav>
+
+
+<!-- recent works -->
+<section class="trending-section">
+  <h3 class="trending-title">Digital Art</h3>
+  <div class="trending-wrapper">
+    <button class="scroll-btn left" onclick="scrollTrending(-1)">&#10094;</button>
+
+    <div class="trending-scroll-container" id="trending-scroll">
+      <div class="trending-item">
+        <img src="home assets/deadpool poster.png" alt="Deadpool" />
+        <p>Deadpool</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/zoro.png" alt="Zoro" />
+        <p>Zoro</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/miku full.jpg" alt="Itachi" />
+        <p>Itachi</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="Kaneki" />
+        <p>Kaneki</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="BTS" />
+        <p>BTS</p>
+      </div>
+ 
+    <button class="scroll-btn right" onclick="scrollTrending(1)">&#10095;</button>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="trending-section">
+  <h3 class="trending-title">Real Portrait</h3>
+  <div class="trending-wrapper">
+    <button class="scroll-btn left" onclick="scrollTrending(-1)">&#10094;</button>
+
+    <div class="trending-scroll-container" id="trending-scroll">
+      <div class="trending-item">
+        <img src="home assets/deadpool poster.png" alt="Deadpool" />
+        <p>Deadpool</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/zoro.png" alt="Zoro" />
+        <p>Zoro</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/miku full.jpg" alt="Itachi" />
+        <p>Itachi</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="Kaneki" />
+        <p>Kaneki</p>
+      </div>
+      <div class="trending-item">
+        <img src="home assets/rem.jpg" alt="BTS" />
+        <p>BTS</p>
+      </div>
+ 
+    <button class="scroll-btn right" onclick="scrollTrending(1)">&#10095;</button>
+  </div>
+</section>
+
+
+
+
+<section class="logo-section">
+  <h3 class="logo-title">Digital Logo</h3>
+  <div class="logo-wrapper">
+    <button class="scroll-btn left" onclick="scrollLogo(-1)">&#10094;</button>
+
+    <div class="logo-scroll-container" id="logo-scroll">
+      <div class="logo-item">
+        <img src="logo/zero to infinity.png" alt="Deadpool" />
+        <p>Deadpool</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo/chronos plays.png" alt="Zoro" />
+        <p>Zoro</p>
+      </div>
+      <div class="logo-item">
+        <img src="logo/know why.png" alt="Itachi" />
+        <p>Itachi</p>
+      </div>
+      
+ 
+     <button class="scroll-btn right" onclick="scrollLogo(1)">&#10095;</button>
+  </div>
+</section>
+
+<script>
+  function scrollTrending(direction) {
+    const container = document.getElementById('trending-scroll');
+    const scrollAmount = 300;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollLogo(direction) {
+    const container = document.getElementById('logo-scroll');
+    const scrollAmount = 300;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+
+</script>
+
+
+
+
+
+
+
+<div id="footer-container"></div>
+
+
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide');
+  const slideWrapper = document.querySelector('.slide-wrapper');
+  const scrollButtons = document.querySelectorAll('.scroll-btn');
+  let currentIndex = 0;
+  let slideInterval;
+  
+  // Initialize first slide
+  slides[currentIndex].classList.add('active');
+  
+  // Auto-advance every 5 seconds (keep this)
+  function startSlideShow() {
+    slideInterval = setInterval(() => {
+      goToSlide((currentIndex + 1) % slides.length, true); // true = auto transition
+    }, 5000);
+  }
+  
+  // Transition handler
+  function goToSlide(index, isAutoTransition = false) {
+    // Only animate for auto transitions
+    const transitionTime = isAutoTransition ? '0.5s' : '0s';
+    
+    // Apply instant transition for manual clicks
+    document.documentElement.style.setProperty('--transition-time', transitionTime);
+    
+    slides[currentIndex].classList.remove('active');
+    currentIndex = index;
+    slides[currentIndex].classList.add('active');
+    
+    // Scroll behavior
+    slideWrapper.scrollTo({
+      left: currentIndex * slideWrapper.clientWidth,
+      behavior: isAutoTransition ? 'smooth' : 'auto'
+    });
+    
+    // Reset timer on manual click
+    if (!isAutoTransition) {
+      clearInterval(slideInterval);
+      startSlideShow();
+    }
+  }
+  
+  // Button controls
+  scrollButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const direction = button.classList.contains('left') ? -1 : 1;
+      goToSlide((currentIndex + direction + slides.length) % slides.length);
+    });
+  });
+  
+  // Start the slideshow
+  startSlideShow();
+});
+</script>
+</body>
+</html>
